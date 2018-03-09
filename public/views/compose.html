@@ -1,0 +1,47 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+	<div class="navbar-header">
+      <a class="navbar-brand" href="#dashboard">Dashoard</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#/"><span class="glyphicon glyphicon-log-out"></span> Sign out</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+	<div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form class="form" name="composeForm" autocomplete="off" novalidate>
+					<h3>New Message</h3>
+					<hr/>
+                    <input type="text" name="recipient" ng-model="recipient" class="form-control input-lg"
+						placeholder="To (You will get suggestions of users existing in Database)" ng-change="changeState()" autofocus list="suggestions" required />
+					
+					<datalist id="suggestions">
+						<option ng-repeat="recipient in recipientList">{{recipient}}</option>
+					</datalist>
+					
+					<p ng-if="composeForm.recipient.$error.required && composeForm.recipient.$dirty" style="color:red" 
+						class="help-block">Recipient username is required.</p>
+					<br/>
+					
+					<textarea type="text" name="message" ng-model="message" class="form-control input-lg"
+						placeholder="Type your message here" rows=10 required ></textarea>
+					
+					<p ng-if="composeForm.message.$error.required && composeForm.message.$dirty" style="color:red" 
+						class="help-block">Message is required.</p>
+					<br/>
+					
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="composeForm.$invalid" ng-click="send()">
+                        Send mail
+						<span class="glyphicon glyphicon-send"></span>
+					</button>
+					<br/>
+					<button class="btn btn-lg btn-danger btn-block" type="button" ng-click="discard()">Discard
+						<span class="glyphicon glyphicon-trash"></span>
+					</button>
+            </form>          
+        </div>
+	</div>            
+</div>

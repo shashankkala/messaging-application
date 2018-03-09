@@ -1,0 +1,22 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+	<div class="navbar-header">
+      <a class="navbar-brand" href="#dashboard">Dashoard</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#/"><span class="glyphicon glyphicon-log-out"></span> Sign out</a></li>
+    </ul>
+  </div>
+</nav>
+<br><br>
+
+  <div class="row">
+    <div class="col-sm-3 col-md-2">
+      <a href="#compose" class="btn btn-danger btn-sm btn-block" role="button">COMPOSE</a>
+      <hr />
+      <ul class="nav nav-pills nav-stacked">
+        <li><a href="#inbox"><span class="badge pull-right">{{receivedCount}}</span> Inbox </a></li>
+        <li><a href="#sent"><span class="badge pull-right">{{sentCount}}</span> Sent</a></li>
+      </ul>
+    </div>
+  </div>

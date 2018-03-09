@@ -1,0 +1,47 @@
+<br>
+<div class="container">
+	<div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form class="form" name="signupForm" autocomplete="off" novalidate>
+					<h3>Sign Up</h3>
+					<hr/>
+                    <h4>It's free and always will be.</h4>
+					<br/>
+                    <input type="text" name="username" ng-model="username" class="form-control input-lg" placeholder="Enter a username"
+						ng-pattern="/^[a-zA-Z0-9_]*$/" ng-minlength=5 ng-change="changeState()" autofocus required />
+						
+					<p ng-if="signupForm.username.$error.required && signupForm.username.$dirty" style="color:red" 
+						class="help-block">Username is required.</p>
+						
+					<p ng-if="signupForm.username.$error.pattern && signupForm.username.$dirty" style="color:red" 
+						class="help-block">Only alphanumeric characters are allowed.</p>
+						
+					<p ng-if="signupForm.username.$error.minlength" style="color:red" class="help-block">Username should contain
+						minimum 5 characters.</p>
+					<br/>
+					
+					<input type="password" name="password" ng-model="password" class="form-control input-lg" placeholder="Password" 
+						ng-minlength=5 required />
+					
+					<p ng-if="signupForm.password.$error.minlength" style="color:red" class="help-block">Minimum length of password should be 5 characters.</p>
+					<br/>
+					
+					<input type="password" name="confirmPassword" ng-model="confirmPassword" class="form-control input-lg" 
+						placeholder="Confirm Password" required />
+                    <br/>
+					<br/>
+					<span class="help-block">
+						By clicking Create my account, you agree to our Terms and that you have read our Data Use Policy, including our
+						Cookie Use.
+					</span>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="signupForm.$invalid" ng-click="signup()">
+                        Create my account
+					</button>
+					<br/>
+					<button class="btn btn-lg btn-danger btn-block" type="button" ng-click="cancel()">
+                        Cancel
+					</button>	
+            </form>          
+        </div>
+	</div>            
+</div>
