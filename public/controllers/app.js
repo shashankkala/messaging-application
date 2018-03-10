@@ -1,9 +1,10 @@
-var app = angular.module('mailingApp', ['ngMaterial', 'ngRoute']);
+var app = angular.module('mailingApp', ['ngMaterial', 'ngRoute', 'ngCookies']);
 
 app.config(function($routeProvider){
 	$routeProvider
 	.when('/',{
-		templateUrl: '/../views/main.html'
+		templateUrl: '/../views/home.html',
+		controller: 'homeController'
 	})
 	.when('/signup',{
 		templateUrl: '/../views/signup.html',
@@ -22,62 +23,18 @@ app.config(function($routeProvider){
 		controller: 'composeController'
 	})
 	.when('/inbox',{
-		templateUrl: '/../views/inbox.html',
-		controller: 'inboxController'
+		templateUrl: '/../views/dashboard.html',
+		controller: 'dashboardController'
 	})
 	.when('/sent',{
 		templateUrl: '/../views/sent.html',
-		controller: 'sentController'
+		controller: 'dashboardController'
+	})
+	.when('/logout',{
+		templateUrl: '/../views/home.html',
+		controller: 'logoutController'
 	})
 	.otherwise({
 		redirectTo : '/'
 	});
-});
-
-app.factory('currentUserService', function() {
-	var savedData = {}
-	function set(data) {
-		savedData = data;
-	}
-	function get() {
-		return savedData;
-	}
-
-	return {
-	set: set,
-	get: get
-	}
-
-});
-
-app.factory('receivedMailService', function() {
-	var savedData = {}
-	function set(data) {
-		savedData = data;
-	}
-	function get() {
-		return savedData;
-	}
-
-	return {
-	set: set,
-	get: get
-	}
-
-});
-
-app.factory('sentMailService', function() {
-	var savedData = {}
-	function set(data) {
-		savedData = data;
-	}
-	function get() {
-		return savedData;
-	}
-
-	return {
-	set: set,
-	get: get
-	}
-
 });

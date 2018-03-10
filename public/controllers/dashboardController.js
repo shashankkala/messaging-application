@@ -1,6 +1,10 @@
-app.controller('dashboardController', ['$scope', '$http', '$mdToast', '$animate', 'currentUserService', 'receivedMailService',
-	'sentMailService',
-	function($scope, $http, $mdToast, $animate, currentUserService, receivedMailService, sentMailService){
+app.controller('dashboardController', ['$scope', '$http', '$mdToast', '$animate', '$cookies', '$location',
+	function($scope, $http, $mdToast, $animate, $cookies, $location){
+		
+		if(!$cookies.get("user")){
+			$location.path('/logout');
+			return;
+		}
 		
 		$scope.toastPosition = {
 			bottom: false,
@@ -27,12 +31,12 @@ app.controller('dashboardController', ['$scope', '$http', '$mdToast', '$animate'
 		};
 						
 		$http.get('/inMails', {
-			params: { user: currentUserService.get() }
+			params: { user: $cookies.get("user")}
 		})
 		.then(
 			function(response){
 				$scope.receivedCount = response.data.length;
-				receivedMailService.set(response.data);
+				$scope.inboxMessages = response.data;
 			},
 			function(response){
 				if(response.data.reason == undefined){
@@ -42,13 +46,12 @@ app.controller('dashboardController', ['$scope', '$http', '$mdToast', '$animate'
 		);
 		
 		$http.get('/outMails', {
-			params: { user: currentUserService.get()}
+			params: { user: $cookies.get("user")}
 		})
 		.then(
 			function(response) {
-				console.log(response.data);
 				$scope.sentCount = response.data.length;
-				sentMailService.set(response.data);
+				$scope.sentMessages = response.data;
 			},
 			function(response) {
 				if(response.data.reason == undefined){

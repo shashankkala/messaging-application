@@ -114,7 +114,6 @@ app.post('/sendMail', function(req, res){
 });
 
 app.get('/inMails', function(req, res){
-	console.log(req.query.user);
 	Message.find({
 		recipient : req.query.user
 	})

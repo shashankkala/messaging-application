@@ -1,5 +1,10 @@
-app.controller('composeController', ['$scope', '$http', '$mdToast', '$animate', '$location', 'currentUserService',
-	function($scope, $http, $mdToast, $animate, $location, currentUserService){
+app.controller('composeController', ['$scope', '$http', '$mdToast', '$animate', '$location', '$cookies',
+	function($scope, $http, $mdToast, $animate, $location, $cookies){
+		
+		if(!$cookies.get("user")){
+			$location.path('/logout');
+			return;
+		}
 		
 		$scope.toastPosition = {
 			bottom: false,
@@ -53,7 +58,7 @@ app.controller('composeController', ['$scope', '$http', '$mdToast', '$animate', 
 			
 			var data = {
 				recipient : $scope.recipient,
-				sender : currentUserService.get(),
+				sender : $cookies.get("user"),
 				message : $scope.message,
 			};
 			

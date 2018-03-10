@@ -1,5 +1,10 @@
-app.controller('loginController', ['$scope', '$http', '$mdToast', '$animate', '$location', 'currentUserService',
-	function($scope, $http, $mdToast, $animate, $location, currentUserService){
+app.controller('loginController', ['$scope', '$http', '$mdToast', '$animate', '$location', '$cookies',
+	function($scope, $http, $mdToast, $animate, $location, $cookies){
+		
+		if($cookies.get("user")){
+			$location.path('/dashboard');
+			return;
+		}
 		
 		$scope.toastPosition = {
 			bottom: false,
@@ -56,7 +61,7 @@ app.controller('loginController', ['$scope', '$http', '$mdToast', '$animate', '$
 						//console.log(response.data);
 						if(response.data.error == ""){
 							$scope.showToast("Welcome "+response.data.username+"!");
-							currentUserService.set(response.data.username);
+							$cookies.put("user",response.data.username);
 							$location.path('/dashboard');
 						}
 					},	

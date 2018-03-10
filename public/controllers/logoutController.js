@@ -1,5 +1,5 @@
-app.controller('inboxController', ['$scope', '$mdToast', '$animate', '$location', 'receivedMailService',
-	function($scope, $mdToast, $animate, $location, receivedMailService){
+app.controller('logoutController', ['$scope', '$mdToast', '$animate', '$location', '$cookies',
+	function($scope, $mdToast, $animate, $location, $cookies){
 		
 		$scope.toastPosition = {
 			bottom: false,
@@ -25,15 +25,10 @@ app.controller('inboxController', ['$scope', '$mdToast', '$animate', '$location'
 					);
 		};
 		
-		$scope.newMail = function(){
-			$location.path('/compose');
-		};
+		//removing the cookie
+		$cookies.remove("user");
+		$location.path('/home');
 		
-		//getting array of received messages
-		$scope.messages = receivedMailService.get();
-		
-		if($scope.messages.length == 0){
-			$scope.showToast("Your inbox is empty");
-		}
+		$scope.showToast("You have been logged out. Please relogin to use the application");
 	}
 ]);

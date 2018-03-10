@@ -1,5 +1,10 @@
-app.controller('signupController', ['$scope', '$http', '$mdToast', '$animate', '$location', 
-	function($scope, $http, $mdToast, $animate, $location){
+app.controller('signupController', ['$scope', '$http', '$mdToast', '$animate', '$location', '$cookies',
+	function($scope, $http, $mdToast, $animate, $location, $cookies){
+		
+		if($cookies.get("user")){
+			$location.path('/dashboard');
+			return;
+		}
 		
 		$scope.toastPosition = {
 			bottom: false,
