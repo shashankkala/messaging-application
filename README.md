@@ -55,13 +55,19 @@ provided.
 <h2 id="guide">Setup guide</h2>
 <h3>Pre-requisites</h3>
 <ul>
-  <li>You need to have <b>Node.js</b> and <b>MongoDB</b> installed in your local system. You can go to the respective websites to install
-    them if you already don't have them in your system.
+  <li>You need to have <b>Node.js</b> and <b>MongoDB</b> installed in your local system. If you already don't have them in your system,
+    then you can go to the following links : 
+    <ul>
+      <li><a href="https://www.mongodb.com/">MongoDB website</a></li>
+      <li><a href="https://nodejs.org/en/">MongoDB website</a></li>
+    </ul>
   </li>
   <li>You should have a database named <b>mailer</b> in your mongoDB database. This is beacuse in my server.js, I am connecting to the 
     database mailer.
   </li>
-  <li>You should have the following collections in the database mailer : <b>users</b> and <b>messages</b></li>
+  <li>You should have the following collections in the database mailer : <b>users</b> and <b>messages</b>. You can refer the 
+    <b>db_setup.txt</b> file for creating above collections.
+  </li>
 </ul>
 
 <h3>Steps for running the application in your local system</h3>
