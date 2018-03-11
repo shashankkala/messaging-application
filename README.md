@@ -59,7 +59,7 @@ provided.
     then you can go to the following links : 
     <ul>
       <li><a href="https://www.mongodb.com/">MongoDB website</a></li>
-      <li><a href="https://nodejs.org/en/">MongoDB website</a></li>
+      <li><a href="https://nodejs.org/en/">NodeJs website</a></li>
     </ul>
   </li>
   <li>You should have a database named <b>mailer</b> in your mongoDB database. This is beacuse in my server.js, I am connecting to the 

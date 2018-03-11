@@ -1,0 +1,12 @@
+1. Open cmd and navigate the directory to the bin folder inside your mongodb installation folder.
+2. Start mongo shell by typing 'mongo' in the cmd.(If you are having trouble starting the mongo shell go to the youtube link which I have
+	shared in the bottom of the readme file.)
+3. Now run the following commands one by one in mongo shell.
+
+use mailer;
+
+db.createCollection('users');
+
+db.createCollection('messages');
+
+4. Now your db has been setup.
